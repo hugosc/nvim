@@ -1,31 +1,35 @@
-# 🚀 Neovim Configuration
+# Neovim Configuration
 
-My personal Neovim configuration built on top of [LazyVim](https://github.com/LazyVim/LazyVim), featuring a dark theme, custom plugins, and productivity enhancements with AI integration.
+Personal Neovim configuration based on lazy.nvim.
+This is meant to function as a note taker or a development environment, mainly for java.
+A pretty maximalist but very optimised setup that does everything I _personally_ could need it to do.
 
-## ✨ Features
+## Features
 
-- 🎨 Dark theme using base16-black-metal-gorgoroth
-- 📦 Lazy-loaded plugins via [lazy.nvim](https://github.com/folke/lazy.nvim)
-- 🤖 AI-powered development with:
-  - Copilot.lua integration
-  - Avante.nvim for AI assistance (using Claude-3.5-Sonnet)
-- 🎮 Discord presence integration via Neocord
-- 📝 Enhanced Markdown support:
-  - PDF export capabilities
-  - Markdown rendering
-- 🏗️ Build tool integration:
-  - Gradle support
-  - Maven support
-  - TOML, TypeScript, and YAML language support
-- 📚 Obsidian integration for note-taking
-- 🎯 Zen mode for focused editing
-- 🔄 Tmux navigation integration
+- Built on lazy.nvim for better plugin management
+- Code completion and LSP support
+- File navigation and fuzzy finding
+- Git integration
+- Markdown/Obsidian support
+- Discord presence
+- Model integration
+  - Avante.nvim code editing workflow
+  - Copilot support with model switching capabilities
+  - Support for multiple AI providers (OpenRouter, Ollamma)
+  - Modular self generated MCP server integration
+    - File/directory operation (view, grep, rename, delete, etc.)
+    - Search codebase, dispatch search agents
+    - Execute code (bash, python)
+    - Web search/scrape, fetch, and puppet agents
+    - Memory graphs
+    - Sequential thinking and behaviour mods
+    - Git and Github operations
+    - Context management and definition retrieval
 
-## 🛠️ Installation
+## Structure
 
-1. Back up your existing Neovim configuration:
+Main configuration files:
 
-```bash
-mv ~/.config/nvim ~/.config/nvim.bak
-
-```
+- `init.lua`: Entry point
+- `lua/config/`: Core configuration files
+- `lua/plugins/`: Plugin-specific configurations
