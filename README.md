@@ -1,16 +1,16 @@
 # Neovim Configuration
 
+<img src="lua/config/images/generic.jpg" alt="drawing" width="400"/> <img src="lua/config/images/snippet-suggestion.jpg" alt="drawing" width="400"/>
+
 Personal Neovim configuration based on lazy.nvim.
 This is meant to function as a note taker or a development environment, mainly for java.
 A pretty maximalist but very optimised setup that does everything I _personally_ could need it to do.
-
-![Editor](lua/config/images/generic.jpg) ![Editor2](lua/config/images/snippet-suggestion.jpg)
 
 ## Features
 
 - Built on lazy.nvim for better plugin management
 - Code completion and LSP support
-- File navigation and fuzzy finding
+- File navigation and fzf with ripgrep
 - Git functionality
   - Lualine git information display
   - Lazygit integration
@@ -19,9 +19,9 @@ A pretty maximalist but very optimised setup that does everything I _personally_
 
 ---
 
-![RAG1](lua/config/images/ragsearch.jpg) ![RAG2](lua/config/images/ragmanagement.jpg)
-
 ## Model Integration
+
+<img src="lua/config/images/ragsearch.jpg" alt="drawing" width="400"/> <img src="lua/config/images/ragmanagement.jpg" alt="drawing" width="400"/>
 
 - Avante.nvim code editing workflow
 - Copilot support with model switching capabilities
