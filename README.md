@@ -9,13 +9,19 @@ A pretty maximalist but very optimised setup that does everything I _personally_
 - Built on lazy.nvim for better plugin management
 - Code completion and LSP support
 - File navigation and fuzzy finding
-- Git integration
+- Git functionality
+  - Lualine git information display
+  - Lazygit integration
 - Markdown/Obsidian support
 - Discord presence
 - Model integration
   - Avante.nvim code editing workflow
   - Copilot support with model switching capabilities
-  - Support for multiple AI providers (OpenRouter, Ollamma)
+  - Support for multiple AI providers (OpenRouter, Ollama)
+  - Retrieval Augmented Generation Support
+    - Running Ollama endpoint
+    - Llama3.2:1b as LLM
+    - Nomic-Embed-Text as embed model
   - Modular self generated MCP server integration
     - File/directory operation (view, grep, rename, delete, etc.)
     - Search codebase, dispatch search agents

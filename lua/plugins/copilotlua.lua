@@ -18,8 +18,8 @@ return {
         },
       },
       suggestion = {
-        enabled = false,
-        auto_trigger = false,
+        enabled = true,
+        auto_trigger = true,
         hide_during_completion = true,
         debounce = 75,
         keymap = {
@@ -33,7 +33,7 @@ return {
       },
       filetypes = {
         yaml = false,
-        markdown = false,
+        markdown = true,
         help = false,
         gitcommit = false,
         gitrebase = false,
