@@ -48,7 +48,8 @@ return {
         enabled = true, -- Enables the RAG service
         host_mount = os.getenv("HOME"), -- Host mount path for the rag service
         provider = "ollama", -- The provider to use for RAG service
-        llm_model = "llama3.2:1b", -- The LLM model to use for RAG service
+        llm_model = "Crocod1le/esoteric-rag-form:latest", -- The LLM model to use for RAG service
+        embed_model = "yxchia/multilingual-e5-base:latest",
         endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
       },
 
