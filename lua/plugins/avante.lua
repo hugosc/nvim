@@ -61,7 +61,7 @@ return {
 
       copilot = {
         temperature = 0.1,
-        model = "claude-3.7-sonnet",
+        model = "claude-3.5-sonnet",
         max_tokens = 4096,
       },
 

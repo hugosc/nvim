@@ -4,6 +4,8 @@ Personal Neovim configuration based on lazy.nvim.
 This is meant to function as a note taker or a development environment, mainly for java.
 A pretty maximalist but very optimised setup that does everything I _personally_ could need it to do.
 
+![Editor](lua/config/images/generic.jpg)
+
 ## Features
 
 - Built on lazy.nvim for better plugin management
@@ -21,7 +23,7 @@ A pretty maximalist but very optimised setup that does everything I _personally_
   - Retrieval Augmented Generation Support
     - Running Ollama endpoint
     - Crocod1le/esoteric-rag-form as LLM
-    - Cracked version of Multilingual e5 as embed model
+    - Cracked version of Multilingual e5 as embed modes l
   - Modular self generated MCP server integration
     - File/directory operation (view, grep, rename, delete, etc.)
     - Search codebase, dispatch search agents
