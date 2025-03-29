@@ -28,8 +28,8 @@ A pretty maximalist but very optimised setup that does everything I _personally_
 - Support for multiple AI providers (OpenRouter, Ollama)
 - Retrieval Augmented Generation Support
   - Running Ollama endpoint
-  - Crocod1le/esoteric-rag-form as LLM
-  - Cracked version of Multilingual e5 as embed modes l
+  - My Crocod1le/esoteric-rag-form as LLM
+  - Cracked version of Multilingual e5 as embed model
 - Modular self generated MCP server integration
   - File/directory operation (view, grep, rename, delete, etc.)
   - Search codebase, dispatch search agents
@@ -39,11 +39,3 @@ A pretty maximalist but very optimised setup that does everything I _personally_
   - Sequential thinking and behaviour mods
   - Git and Github operations
   - Context management and definition retrieval
-
-## Structure
-
-Main configuration files:
-
-- `init.lua`: lazy.nvim initialisation
-- `lua/config/`: Core configuration files, autocmds
-- `lua/plugins/`: Plugin-specific configurations and installation
