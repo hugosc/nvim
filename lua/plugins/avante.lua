@@ -48,8 +48,8 @@ return {
         enabled = true, -- Enables the RAG service
         host_mount = os.getenv("HOME"), -- Host mount path for the rag service
         provider = "ollama", -- The provider to use for RAG service
-        llm_model = "Crocod1le/esoteric-rag-form:latest", -- The LLM model to use for RAG service
-        embed_model = "yxchia/multilingual-e5-base:latest",
+        llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
+        embed_model = "Crocod1le/snowflake-custom:latest",
         endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
       },
 
@@ -77,6 +77,14 @@ return {
           endpoint = "https://openrouter.ai/api/v1",
           api_key_name = "OPENROUTER_API_KEY",
           model = "deepseek/deepseek-r1:free",
+        },
+
+        openrouter_qwenq = {
+          __inherited_from = "openai",
+          disable_tools = true,
+          endpoint = "https://openrouter.ai/api/v1",
+          api_key_name = "OPENROUTER_API_KEY",
+          model = "qwen/qwq-32b:free",
         },
 
         openrouter_gemini = {

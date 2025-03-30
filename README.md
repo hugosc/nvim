@@ -28,8 +28,8 @@ A pretty maximalist but very optimised setup that does everything I _personally_
 - Support for multiple AI providers (OpenRouter, Ollama)
 - Retrieval Augmented Generation Support
   - Running Ollama endpoint
-  - My Crocod1le/esoteric-rag-form as LLM
-  - Cracked version of Multilingual e5 as embed model
+  - My Crocod1le/rag-skeleton-build based on Gemma-3 as LLM
+  - My Crocod1le/snowflake-custom running as embed
 - Modular self generated MCP server integration
   - File/directory operation (view, grep, rename, delete, etc.)
   - Search codebase, dispatch search agents

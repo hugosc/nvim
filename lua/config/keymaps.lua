@@ -18,3 +18,13 @@ vim.keymap.set("n", "Zj", "<Cmd>ObsidianTemplate<CR>", { silent = true })
 vim.keymap.set("n", "Zk", "<Cmd>ObsidianPasteImg<CR>", { silent = true })
 vim.keymap.set("n", "Zn", "<Cmd>ObsidianNewFromTemplate<CR>", { silent = true })
 vim.keymap.set("n", "ZN", "<Cmd>ObsidianNew<CR>", { silent = true })
+
+vim.keymap.set("i", "<Tab>", function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, {
+  silent = true,
+})
