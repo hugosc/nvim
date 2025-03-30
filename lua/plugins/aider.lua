@@ -1,6 +1,7 @@
 return {
   "GeorgesAlkhouri/nvim-aider",
   opts = {
+    aider_cmd = vim.fn.expand("~/.local/bin/aider"), -- Explicitly set aider path
     cmd = {
       "AiderTerminalToggle",
       "AiderHealth",
