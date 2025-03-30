@@ -14,63 +14,65 @@ return {
     },
 
     opts = {
-      -- MCP Hub Setup
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        return hub:get_active_servers_prompt()
-      end,
-      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
-
-      history = {
-        max_tokens = 4090,
-      },
+      -- General settings
       behaviour = {
         enable_token_counting = false,
         enable_claude_text_tool_mode = false,
+        enable_cursor_planning_mode = true,
         use_cwd_as_project_root = true,
         auto_suggestions = false,
       },
 
-      -- Set your primary provider here (pick only one)
-      provider = "copilot", -- Choose between: "ollama", "claude", "openrouter", "copilot"
-
-      ollama = {
-        endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-        model = "deepseek-r1:1.5b",
+      history = {
+        max_tokens = 4090,
       },
 
-      rag_service = {
-        enabled = true, -- Enables the RAG service
-        host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-        provider = "ollama", -- The provider to use for RAG service
-        llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
-        embed_model = "Crocod1le/snowflake-custom:latest",
-        endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
+      -- Provider settings
+      provider = "gemini", -- Choose between: "ollama", "claude", "openrouter", "copilot"
+      cursor_applying_provider = "high_speed", -- Use the new vendor for cursor application
+
+      -- Gemini provider settings
+      gemini = {
+        temperature = 0.1,
+        --model = "gemini-2.5-pro-exp-03-25", -- Main provider uses 2.5-pro
+        model = "gemini-2.0-flash",
       },
 
+      -- Claude provider settings
       claude = {
         temperature = 0.1,
         model = "claude-3-7-sonnet-20250219",
         max_tokens = 4096,
       },
 
+      -- Copilot provider settings
       copilot = {
         temperature = 0.1,
         model = "claude-3.5-sonnet",
         max_tokens = 4096,
       },
 
-      gemini = {
-        temperature = 0.1,
-        model = "gemini-2.0-flash",
+      -- Ollama provider settings
+      ollama = {
+        endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+        model = "deepseek-r1:1.5b",
       },
 
+      -- OpenRouter vendor settings
       vendors = {
+        -- Add a new vendor specifically for the cursor applying provider
+        experimental_models = {
+          __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
+          model = "gemini-2.5-flash-pro-exp-03-25", -- Override the model to use flash
+          temperature = 0, -- Set temperature to 0 for deterministic cursor application
+        },
+
+        high_speed = {
+          __inherited_from = "gemini",
+          model = "gemini-2.0-flash-lite",
+          temperature = 0.1,
+        },
+
         openrouter_deepseek = {
           __inherited_from = "openai",
           disable_tools = true,
@@ -97,8 +99,37 @@ return {
         },
       },
 
+      -- Autosuggest settings
       autosuggest_enabled = false,
       autosuggest_provider = "copilot",
+
+      -- RAG service settings
+      rag_service = {
+        enabled = true, -- Enables the RAG service
+        host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+        provider = "ollama", -- The provider to use for RAG service
+        llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
+        embed_model = "Crocod1le/snowflake-custom:latest",
+        endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
+      },
+
+      -- Web search engine settings
+      web_search_engine = {
+        provider = "google",
+      },
+
+      -- MCP Hub Setup
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+
+      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
     },
   },
 }
