@@ -65,7 +65,7 @@ return {
         -- Add a new vendor specifically for the cursor applying provider
         experimental_models = {
           __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
-          model = "gemini-2.5-flash-pro-exp-03-25", -- Override the model to use flash
+          model = "gemini-2.5-pro-exp-03-25", -- Override the model to use flash
           temperature = 0, -- Set temperature to 0 for deterministic cursor application
         },
 
