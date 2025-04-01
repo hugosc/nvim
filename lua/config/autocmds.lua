@@ -12,6 +12,26 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "NvimTree",
+  callback = function(args)
+    local bufnr = args.buf
+    vim.keymap.set(
+      "n",
+      "<leader>a+",
+      "<cmd>AiderTreeAddFile<cr>",
+      { desc = "Add File from Tree to Aider", buffer = bufnr, noremap = true, silent = true }
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>a-",
+      "<cmd>AiderTreeDropFile<cr>",
+      { desc = "Drop File from Tree from Aider", buffer = bufnr, noremap = true, silent = true }
+    )
+  end,
+  desc = "Aider NvimTree Keymaps",
+})
+
 -- sync system clipboard to vim clipboard
 vim.api.nvim_create_autocmd("FocusGained", {
   callback = function()
@@ -33,28 +53,12 @@ vim.api.nvim_create_autocmd("User", {
     vim.notify(message, vim.log.levels.INFO)
     require("avante.config").override({
       system_prompt = [[Follow these steps for each interaction:
-
-0. mcp protocol:
-   - perform rag_search based on the query
-   - always check mcp memory at the start of each interaction.
-   - for complex problems, always use sequential thinking
-   - update mcp memory after each interaction that reveals new information using mcp knowledge graph 
-
-1. memory retrieval:
-   - always begin your chat by saying only "remembering..." and retrieve all relevant information from your mcp knowledge graph
-   - always refer to your knowledge graph as your "memory"
-
-2. memory:
-   - while conversing with the user, be attentive to any new information that falls into these categories:
-     a) basic identity (age, gender, location, job title, education level, etc.)
-     b) behaviors (interests, habits, etc.)
-     c) communication and langauge style (communication style, common keywords, etc.)
-
-3. memory update:
-   - if any new information was gathered during the interaction, update your memory as follows:
-     a) create entities for recurring organizations, people, and significant events
-     b) connect them to the current entities using relations
-     c) store facts about them as observations]],
+- You are an intelligent assistant. You are a helpful and knowledgeable assistant.
+- When given a task, first infer what tools may be used to get it done. 
+- Infer based on the request whether to use tools immediately. For example, if the user asks "explore my project", you should immediately and automatically list files and begin exploring them.
+- This is important to reduce the amount of instructions needed from the user.
+- If the user asks a question that may require the use of tools, prioritise inferring the rough idea of what they would want, then use the tools without asking.
+     ]],
     })
   end,
 })

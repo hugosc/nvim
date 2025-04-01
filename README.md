@@ -4,7 +4,7 @@
 
 Personal Neovim configuration based on lazy.nvim.
 This is meant to function as a note taker or a development environment, mainly for java.
-A pretty maximalist but very optimised setup that does everything I _personally_ could need it to do.
+An extremely maximalist but very optimised setup that does everything I _personally_ could need it to do. This is the result of me deciding that the damn app I use for writing has to be the best possible one and the only one. Everything inside this setup is endgame, as in, everything in this setup is the maximum possible most personalised thing I could possibly want for a given feature (especially the damn AI). The end result is that whatever I want to do can probably be done quickly, exactly how I want it, in extremely flashy fashion that reminds me of how much time I wasted doing all this. Much of this config required things that did not exist that day, so much of this config is on the agonisingly bleeding edge, and therefore, especially with some of the AI features that were literally born yesterday, certain features can be a bit unstable. However, most of this config is collapsible and compartmentalised.
 
 ## Features
 
@@ -23,12 +23,15 @@ A pretty maximalist but very optimised setup that does everything I _personally_
 
 <img src="lua/config/images/ragsearch.jpg" alt="drawing" width="400"/> <img src="lua/config/images/ragmanagement.jpg" alt="drawing" width="400"/>
 
-- Avante.nvim code editing workflow
+This took an embarrassing amount of time to make as good as I hoped it could be, but now it is. AI within this setup can be used for basically anything you can imagine, incredibly fast, within the editor, within 3 keyboard presses. Instantly producing a cited (with links) list of relevant research based on my lecture notes, or researching then fetching then forking then editing an obscure github repo, etc.
+
+- Custom version of avante.nvim code editing workflow
 - Copilot support with model switching capabilities
 - Support for multiple AI providers (OpenRouter, Ollama)
+- Reworked for translating Gemini's function calls and allowing it to use tools
 - Retrieval Augmented Generation Support
   - Running Ollama endpoint
-  - My Crocod1le/rag-skeleton-build based on Gemma-3 as LLM
+  - My Crocod1le/rag-skeleton-build based on Gemma-3 for language
   - My Crocod1le/snowflake-custom running as embed
 - Modular self generated MCP server integration
   - File/directory operation (view, grep, rename, delete, etc.)

@@ -28,3 +28,12 @@ vim.keymap.set("i", "<Tab>", function()
 end, {
   silent = true,
 })
+
+-- Aider keymaps
+vim.keymap.set("n", "<leader>a/", "<cmd>AiderTerminalToggle<cr>", { desc = "Aider: Toggle Terminal" })
+vim.keymap.set({ "n", "v" }, "<leader>as", "<cmd>AiderTerminalSend<cr>", { desc = "Aider: Send Selection/Line" })
+vim.keymap.set("n", "<leader>ac", "<cmd>AiderQuickSendCommand<cr>", { desc = "Aider: Quick Send Command" })
+vim.keymap.set("n", "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>", { desc = "Aider: Quick Send Buffer" })
+vim.keymap.set("n", "<leader>a+", "<cmd>AiderQuickAddFile<cr>", { desc = "Aider: Quick Add File" })
+vim.keymap.set("n", "<leader>a-", "<cmd>AiderQuickDropFile<cr>", { desc = "Aider: Quick Drop File" })
+vim.keymap.set("n", "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", { desc = "Aider: Quick Add File Read-Only" })

@@ -5,6 +5,7 @@ return {
     lazy = true,
     version = false,
     build = "make",
+    dir = "~/avante.nvim/",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
@@ -28,14 +29,16 @@ return {
       },
 
       -- Provider settings
-      provider = "gemini", -- Choose between: "ollama", "claude", "openrouter", "copilot"
+      provider = "copilot", -- Choose between: "ollama", "claude", "openrouter", "copilot"
       cursor_applying_provider = "high_speed", -- Use the new vendor for cursor application
 
       -- Gemini provider settings
       gemini = {
         temperature = 0.1,
-        --model = "gemini-2.5-pro-exp-03-25", -- Main provider uses 2.5-pro
+        -- model = "gemini-2.5-pro-exp-03-25", -- Main provider uses 2.5-pro
+        --disable_tools = "true",
         model = "gemini-2.0-flash",
+        GEMINI_API_KEY = "AIzaSyCvlfFu_TpA8Je_mqH3SeFHzTr3eo1u2Oo",
       },
 
       -- Claude provider settings
@@ -49,7 +52,6 @@ return {
       copilot = {
         temperature = 0.1,
         model = "claude-3.5-sonnet",
-        max_tokens = 4096,
       },
 
       -- Ollama provider settings
@@ -70,7 +72,7 @@ return {
         high_speed = {
           __inherited_from = "gemini",
           model = "gemini-2.0-flash-lite",
-          temperature = 0.1,
+          temperature = 0,
         },
 
         openrouter_deepseek = {
@@ -104,19 +106,14 @@ return {
       autosuggest_provider = "copilot",
 
       -- RAG service settings
-      rag_service = {
-        enabled = true, -- Enables the RAG service
-        host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-        provider = "ollama", -- The provider to use for RAG service
-        llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
-        embed_model = "Crocod1le/snowflake-custom:latest",
-        endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
-      },
-
-      -- Web search engine settings
-      web_search_engine = {
-        provider = "google",
-      },
+      --      rag_service = {
+      --       enabled = true, -- Enables the RAG service
+      --      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+      --        provider = "ollama", -- The provider to use for RAG service
+      --       llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
+      --      embed_model = "Crocod1le/snowflake-custom:latest",
+      --     endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
+      --  },
 
       -- MCP Hub Setup
       system_prompt = function()
