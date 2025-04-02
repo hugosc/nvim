@@ -5,7 +5,7 @@ return {
     lazy = true,
     version = false,
     build = "make",
-    dir = "~/avante.nvim/",
+    dir = "~/avantegeminitools/",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
@@ -36,7 +36,6 @@ return {
       gemini = {
         temperature = 0.1,
         -- model = "gemini-2.5-pro-exp-03-25", -- Main provider uses 2.5-pro
-        --disable_tools = "true",
         model = "gemini-2.0-flash",
         GEMINI_API_KEY = "AIzaSyCvlfFu_TpA8Je_mqH3SeFHzTr3eo1u2Oo",
       },
