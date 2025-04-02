@@ -5,9 +5,10 @@ return {
       "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
     },
     -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+    build = "lua bundled_build.lua", -- Use the bundled build script
     config = function()
       require("mcphub").setup({
+        use_bundled_binary = true, -- Tell the plugin to use the bundled binary
         -- Required options
         port = 3000, -- Port for MCP Hub server
         config = vim.fn.expand("~/mcpservers.json"), -- Absolute path to config file
