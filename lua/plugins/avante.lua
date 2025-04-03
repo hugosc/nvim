@@ -60,7 +60,7 @@ return {
       -- Copilot provider settings
       copilot = {
         temperature = 0.1,
-        model = "claude-3.5-sonnet",
+        model = "claude-3.7-sonnet",
       },
 
       -- Ollama provider settings
