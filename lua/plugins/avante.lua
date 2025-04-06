@@ -29,7 +29,7 @@ return {
       behaviour = {
         enable_token_counting = false,
         enable_claude_text_tool_mode = false,
-        --        enable_cursor_planning_mode = true,
+        enable_cursor_planning_mode = true,
         use_cwd_as_project_root = true,
         auto_suggestions = false,
         minimize_diff = true,
@@ -41,7 +41,7 @@ return {
 
       -- Provider settings
       provider = "experimental_models", -- Choose between: "ollama", "claude", "openrouter", "copilot"
-      --     cursor_applying_provider = "planning", -- Use the new vendor for cursor application
+      cursor_applying_provider = "planning", -- Use the new vendor for cursor application
 
       -- Gemini provider settings
       gemini = {
