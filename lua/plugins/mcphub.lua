@@ -6,16 +6,17 @@ return {
     },
     -- cmd = "MCPHub", -- lazily start the hub when `MCPHub` is called
     cmd = "MCPHub", -- lazy load by default
-    build = "npm install -g mcp-hub@latest",
+    build = "bundled_build.lua",
     config = function()
       require("mcphub").setup({
         extensions = {
           avante = {
-            auto_approve_mcp_tool_calls = false,
+            auto_approve_mcp_tool_calls = true,
           },
         },
         -- Required options
         port = 3000, -- Port for MCP Hub server
+        use_bundled_binary = true,
         config = vim.fn.expand("~/mcpservers.json"), -- Absolute path to config file
 
         -- Optional options
