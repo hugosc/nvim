@@ -89,26 +89,6 @@ return {
           temperature = 0,
         },
 
-        tool_expert = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          disabled_tools = {
-            "list_files",
-            "search_files",
-            "read_file",
-            "create_file",
-            "rename_file",
-            "delete_file",
-            "create_dir",
-            "rename_dir",
-            "delete_dir",
-            "bash",
-          },
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "cohere/command-r7b-12-2024",
-        },
-
         groq = { -- define groq provider
           __inherited_from = "openai",
           api_key_name = "GROQ_API_KEY",
