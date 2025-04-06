@@ -29,7 +29,7 @@ return {
       behaviour = {
         enable_token_counting = false,
         enable_claude_text_tool_mode = false,
-        --        enable_cursor_planning_mode = true,
+        enable_cursor_planning_mode = true,
         use_cwd_as_project_root = true,
         auto_suggestions = false,
         minimize_diff = true,
@@ -41,7 +41,7 @@ return {
 
       -- Provider settings
       provider = "experimental_models", -- Choose between: "ollama", "claude", "openrouter", "copilot"
-      --     cursor_applying_provider = "planning", -- Use the new vendor for cursor application
+      cursor_applying_provider = "planning", -- Use the new vendor for cursor application
 
       -- Gemini provider settings
       gemini = {
@@ -87,26 +87,6 @@ return {
           -- Correct the model name format
           model = "llama-3.1-8b-instant",
           temperature = 0,
-        },
-
-        tool_expert = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          disabled_tools = {
-            "list_files",
-            "search_files",
-            "read_file",
-            "create_file",
-            "rename_file",
-            "delete_file",
-            "create_dir",
-            "rename_dir",
-            "delete_dir",
-            "bash",
-          },
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "cohere/command-r7b-12-2024",
         },
 
         groq = { -- define groq provider
