@@ -72,18 +72,16 @@ vim.notify("Custom system prompt activated by default", vim.log.levels.INFO)
 vim.api.nvim_create_autocmd("User", {
   pattern = "ToggleMyPrompt",
   callback = function()
-    prompt_active = not prompt_active -- Toggle the state
+    prompt_active = not prompt_active
     local message
     if prompt_active then
-      -- Activate the prompt
       require("avante.config").override({
         system_prompt = custom_system_prompt,
       })
       message = "Custom system prompt activated"
     else
-      -- Deactivate the prompt (clear the override)
       require("avante.config").override({
-        system_prompt = nil, -- Set to nil to potentially remove the override
+        system_prompt = nil,
       })
       message = "Custom system prompt deactivated"
     end

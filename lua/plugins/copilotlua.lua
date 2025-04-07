@@ -1,6 +1,9 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    -- event = { "BufReadPre", "BufNewFile" },
+    event = "InsertEnter",
     opts = {
       panel = {
         enabled = true,
@@ -13,7 +16,7 @@ return {
           open = "<M-CR>",
         },
         layout = {
-          position = "bottom", -- | top | left | right | horizontal | vertical
+          position = "bottom",
           ratio = 0.4,
         },
       },
@@ -25,17 +28,7 @@ return {
         debounce = 75,
       },
     },
-    filetypes = {
-      yaml = false,
-      help = false,
-      gitcommit = false,
-      gitrebase = false,
-      hgcommit = false,
-      svn = false,
-      cvs = false,
-      ["."] = false,
-    },
-    copilot_node_command = "node", -- Node.js version must be > 18.x
+    copilot_node_command = "node",
     server_opts_overrides = {},
   },
 }

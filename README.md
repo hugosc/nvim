@@ -23,7 +23,7 @@ An extremely maximalist but very optimised setup that does everything I _persona
 
 <img src="lua/config/images/ragsearch.jpg" alt="drawing" width="400"/> <img src="lua/config/images/ragmanagement.jpg" alt="drawing" width="400"/>
 
-This took an embarrassing amount of time to make as good as I hoped it could be, but now it is. AI within this setup can be used for basically anything you can imagine, incredibly fast, within the editor, within 3 keyboard presses. Instantly producing a cited (with links) list of relevant research based on my lecture notes, or researching then fetching then forking then editing an obscure github repo, etc.
+This took an embarrassing amount of time to make as good as I hoped it could be, but now it is. AI within this setup can be used for basically anything you can imagine, incredibly fast, within the editor, within 3 keyboard presses.
 
 - Custom version of avante.nvim code editing workflow
 - Copilot support with model switching capabilities
@@ -42,3 +42,15 @@ This took an embarrassing amount of time to make as good as I hoped it could be,
   - Sequential thinking and behaviour mods
   - Git and Github operations
   - Context management and definition retrieval
+
+So what does this look like in practice (basic workflow)?
+
+1. Custom configuration tool information and system prompt loaded on start
+2. 3 keys to open window
+3. File is automatically added to context
+4. Prompt
+5. Information from user and information about current tools and files is given to model
+6. Model parses prompt then thinks about what tools may be needed
+   - If tools are needed, runs tools and checks to make sure they have been used successfully, updating itself
+7. After all necessary tools have been used, the response is formatted into a applicable snippet
+8. A separate model applies the edits to your files

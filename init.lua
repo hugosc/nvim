@@ -3,7 +3,7 @@ require("config.lazy")
 vim.o.background = "dark"
 vim.cmd.colorscheme("base16-black-metal-gorgoroth")
 require("plugins.zenmode")
-
+vim.g.copilot_filetypes = { markdown = true }
 -- This is the transparent scheme I previously used
 --vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

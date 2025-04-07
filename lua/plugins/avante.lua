@@ -11,7 +11,7 @@ return {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
     },
 
     opts = {
@@ -58,10 +58,10 @@ return {
       },
 
       -- Copilot provider settings
-      copilot = {
-        temperature = 0.1,
-        model = "o3-mini",
-      },
+      -- copilot = {
+      --  temperature = 0.1,
+      --  model = "o3-mini",
+      -- },
 
       -- Ollama provider settings
       ollama = {
@@ -131,8 +131,6 @@ return {
       },
 
       -- Autosuggest settings
-      autosuggest_enabled = false,
-      autosuggest_provider = "copilot",
 
       -- RAG service settings
       --      rag_service = {
