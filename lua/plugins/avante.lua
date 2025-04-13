@@ -109,7 +109,15 @@ return {
           disable_tools = true,
           endpoint = "https://openrouter.ai/api/v1",
           api_key_name = "OPENROUTER_API_KEY",
-          model = "deepseek/deepseek-r1-distill-llama-70b",
+          model = "deepseek/deepseek-r1",
+        },
+
+        deepinfra = {
+          __inherited_from = "openai",
+          disable_tools = true,
+          endpoint = "https://api.deepinfra.com/v1/openai",
+          api_key_name = "DEEPINFRA_API_KEY",
+          model = "deepseek-ai/DeepSeek-R1-Turbo",
         },
 
         openrouter_qwenq = {
