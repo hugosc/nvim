@@ -36,7 +36,7 @@ return {
       },
 
       history = {
-        max_tokens = 4090,
+        max_tokens = 4096,
       },
 
       -- Provider settings
