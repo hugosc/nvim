@@ -69,6 +69,13 @@ return {
         model = "deepseek-r1:1.5b",
       },
 
+      openai = {
+        api_key_name = "OPENAI_API_KEY",
+        endpoint = "https://api.openai.com/v1/",
+        model = "o4-mini",
+        temperature = 0,
+      },
+
       -- OpenRouter vendor settings
       vendors = {
 
