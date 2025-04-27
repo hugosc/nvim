@@ -1,5 +1,6 @@
 return {
   "GeorgesAlkhouri/nvim-aider",
+  event = "VeryLazy",
   opts = {
     cmd = {
       "AiderTerminalToggle",
