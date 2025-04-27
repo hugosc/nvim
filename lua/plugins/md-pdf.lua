@@ -1,5 +1,6 @@
 return {
   "arminveres/md-pdf.nvim",
+  event = "VeryLazy",
   config = function()
     keys = {
       "<leader>qp",

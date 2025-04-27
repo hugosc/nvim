@@ -40,13 +40,13 @@ return {
       },
 
       -- Provider settings
-      provider = "experimental_models", -- Choose between: "ollama", "claude", "openrouter", "copilot"
+      provider = "gemini", -- Choose between: "ollama", "claude", "openrouter", "copilot"
       cursor_applying_provider = "planning", -- Use the new vendor for cursor application
 
       -- Gemini provider settings
       gemini = {
         temperature = 0.1,
-        model = "gemini-2.0-flash",
+        model = "gemini-2.5-flash-preview-04-17",
         GEMINI_API_KEY = "AIzaSyCvlfFu_TpA8Je_mqH3SeFHzTr3eo1u2Oo",
       },
 
