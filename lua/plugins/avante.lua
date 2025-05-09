@@ -5,7 +5,7 @@ return {
     lazy = true,
     version = false,
     build = "make",
-    dir = "~/avantegeminitools/",
+    --   dir = "~/avantegeminitools/",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
@@ -24,7 +24,7 @@ return {
       --      embed_model = "models/text_embed-004",
       --     endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/", -- Must match your Ollama endpoint since provider is "ollama"
       --  },
-
+      disabled_tools = { "python" },
       -- General settings
       behaviour = {
         enable_token_counting = false,
@@ -47,7 +47,6 @@ return {
       gemini = {
         temperature = 0.1,
         model = "gemini-2.5-flash-preview-04-17",
-        GEMINI_API_KEY = "AIzaSyCvlfFu_TpA8Je_mqH3SeFHzTr3eo1u2Oo",
       },
 
       -- Claude provider settings
@@ -107,7 +106,7 @@ return {
         -- Add a new vendor specifically for the cursor applying provider
         experimental_models = {
           __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
-          model = "gemini-2.5-pro-preview-03-25", -- Override the model to use flash
+          model = "gemini-2.5-pro-preview-05-06", -- Override the model to use flash
           temperature = 0, -- Set temperature to 0 for deterministic cursor application
         },
 

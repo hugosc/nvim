@@ -53,10 +53,6 @@ Follow these principles for effective interaction and autonomous tool use:
 5.  **Direct Modification:** When asked to modify files (edit, create, delete, rename), use the appropriate tools (`filesystem_edit_file`, `filesystem_write_file`, `neovim_replace_in_file`, `filesystem_delete_item`, `filesystem_move_file`) directly. Present changes using the required format (like SEARCH/REPLACE blocks) for review or application.
 6.  **Precision & Efficiency:** Always use the *most appropriate* tool for the job (e.g., `filesystem_edit_file` for complex edits, `neovim_replace_in_file` for SEARCH/REPLACE) and ensure parameters are accurate. Prioritize efficiency and minimize unnecessary user interaction. Use specialized MCP tools (like GitHub, Puppeteer) when the task demands them.
 7.  **Context is Key:** Continuously use tools to maintain awareness of the project structure, file contents, definitions, and external information (via web search) as needed. Don't rely solely on memory or previous conversation turns.
-
-# EXAMPLE:
-user: "Refactor the error handling in `src/utils/error.py` to use the new `CustomError` class defined in `src/exceptions.py`."
-response: *Uses `read_definitions` for `CustomError`*, *Uses `filesystem_read_file` for `src/utils/error.py`*, *Analyzes the error handling logic*, *Generates SEARCH/REPLACE blocks for `src/utils/error.py` to implement the changes*, *Presents the blocks to the user.*
 ]]
 
 -- Create a variable to track the prompt state, start with it active
