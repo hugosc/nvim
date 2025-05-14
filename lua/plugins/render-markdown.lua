@@ -3,13 +3,6 @@
 
 -- Define custom highlight groups for your heading colors
 -- You can place this here or in a more central colors/theme file
-vim.api.nvim_set_hl(0, "MyHeading1Fg", { fg = "#FF8700", bold = true }) -- Example: Orange
-vim.api.nvim_set_hl(0, "MyHeading1Bg", { fg = "#5F0000" }) -- Example: Dark Red background (use 'bg' for full line background)
-vim.api.nvim_set_hl(0, "MyHeading2Fg", { fg = "#87D7FF" }) -- Example: Light Blue
-vim.api.nvim_set_hl(0, "MyHeading2Bg", { fg = "#005F87" }) -- Example: Dark Cyan background
-vim.api.nvim_set_hl(0, "MyHeading3Fg", { fg = "#AF87FF" }) -- Example: Purple
-vim.api.nvim_set_hl(0, "MyHeading3Bg", { fg = "#5F00AF" }) -- Example: Dark Purple background
--- Define MyHeading4Fg/Bg, MyHeading5Fg/Bg, MyHeading6Fg/Bg as needed
 
 return {
   "MeanderingProgrammer/render-markdown.nvim",
