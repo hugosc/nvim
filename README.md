@@ -28,9 +28,9 @@ This took an embarrassing amount of time to make as good as I hoped it could be,
 
 ### Current Specs
 
-- Base model: gemini-2.5-flash-preview-17-04
-- Workhorse model: gemini-2.5-pro-preview-05-06
-- Alt model: o4-mini-preview
+- Base model: `gemini-2.5-flash-preview-17-04`
+- Workhorse model: `gemini-2.5-pro-preview-05-06`
+- Alt model: `o4-mini-preview`
 
 ### Current Features
 
@@ -40,8 +40,8 @@ This took an embarrassing amount of time to make as good as I hoped it could be,
 - Reworked for translating Gemini's function calls and allowing it to use tools
 - Retrieval Augmented Generation Support
   - Running Ollama endpoint
-  - My Crocod1le/rag-skeleton-build based on Gemma-3 for language
-  - My Crocod1le/snowflake-custom running as embed
+  - My `crocod1le/rag-skeleton-build` based on Gemma-3 for language
+  - My `crocod1le/snowflake-custom` running as embed
 - Modular self generated MCP server integration
   - File/directory operation (view, grep, rename, delete, etc.)
   - Search codebase, dispatch search agents
