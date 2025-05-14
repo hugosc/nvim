@@ -2,8 +2,7 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    -- event = { "BufReadPre", "BufNewFile" },
-    event = "InsertEnter",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       panel = {
         enabled = true,
