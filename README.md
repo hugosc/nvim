@@ -52,7 +52,7 @@ This took an embarrassing amount of time to make as good as I hoped it could be,
   - Git and Github operations
   - Context management and definition retrieval
 
-So what does this look like in practice (basic workflow)?
+## So what does this look like in practice (basic workflow)?
 
 1. Custom configuration tool information and system prompt loaded on start
 2. 3 keys to open window
