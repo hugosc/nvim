@@ -11,7 +11,7 @@ return {
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
     },
 
     opts = {
@@ -23,8 +23,7 @@ return {
       --       llm_model = "models/gemini-2.0-flash", -- The LLM model to use for RAG service
       --      embed_model = "models/text_embed-004",
       --     endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/", -- Must match your Ollama endpoint since provider is "ollama"
-      --  },
-      disabled_tools = { "python" },
+      --  }, disabled_tools = { "python" },
       -- General settings
       behaviour = {
         enable_token_counting = false,
@@ -57,10 +56,9 @@ return {
       },
 
       -- Copilot provider settings
-      -- copilot = {
-      --  temperature = 0.1,
-      --  model = "o3-mini",
-      -- },
+      copilot = {
+        model = "o4-mini",
+      },
 
       -- Ollama provider settings
       ollama = {
