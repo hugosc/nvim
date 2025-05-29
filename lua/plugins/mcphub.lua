@@ -9,12 +9,12 @@ return {
     build = "bundled_build.lua",
     config = function()
       require("mcphub").setup({
+        auto_approve = true, -- Automatically approve all requests
         extensions = {
-          avante = {
-            auto_approve_mcp_tool_calls = true,
-          },
+          avante = {},
         },
         -- Required options
+        --
         port = 3000, -- Port for MCP Hub server
         use_bundled_binary = true,
         config = vim.fn.expand("~/mcpservers.json"), -- Absolute path to config file
