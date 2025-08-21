@@ -37,3 +37,6 @@ vim.keymap.set("n", "<leader>ab", "<cmd>AiderQuickSendBuffer<cr>", { desc = "Aid
 vim.keymap.set("n", "<leader>a+", "<cmd>AiderQuickAddFile<cr>", { desc = "Aider: Quick Add File" })
 vim.keymap.set("n", "<leader>a-", "<cmd>AiderQuickDropFile<cr>", { desc = "Aider: Quick Drop File" })
 vim.keymap.set("n", "<leader>ar", "<cmd>AiderQuickReadOnlyFile<cr>", { desc = "Aider: Quick Add File Read-Only" })
+
+-- Go to normal mode from terminal with double escape
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true })

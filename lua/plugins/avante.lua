@@ -23,7 +23,8 @@ return {
       --       llm_model = "models/gemini-2.0-flash", -- The LLM model to use for RAG service
       --      embed_model = "models/text_embed-004",
       --     endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/", -- Must match your Ollama endpoint since provider is "ollama"
-      --  }, disabled_tools = { "python" },
+      --  },
+      disabled_tools = { "python" },
       -- General settings
       behaviour = {
         enable_token_counting = false,
@@ -39,42 +40,30 @@ return {
       },
 
       -- Provider settings
-      provider = "gemini", -- Choose between: "ollama", "claude", "openrouter", "copilot"
+      provider = "copilot", -- Choose between: "ollama", "claude", "openrouter", "copilot"
       cursor_applying_provider = "planning", -- Use the new vendor for cursor application
 
-      -- Gemini provider settings
-      gemini = {
-        temperature = 0.1,
-        model = "gemini-2.5-flash-preview-04-17",
-      },
+      providers = {
+        -- Gemini provider settings
+        gemini = {
+          model = "gemini-2.5-flash",
+          extra_request_body = {
+            temperature = 0.1,
+          },
+        },
+        -- Copilot provider settings
+        copilot = {
+          model = "o4-mini",
+        },
 
-      -- Claude provider settings
-      claude = {
-        temperature = 0.1,
-        model = "claude-3-7-sonnet-20250219",
-        max_tokens = 4096,
-      },
-
-      -- Copilot provider settings
-      copilot = {
-        model = "o4-mini",
-      },
-
-      -- Ollama provider settings
-      ollama = {
-        endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-        model = "deepseek-r1:1.5b",
-      },
-
-      openai = {
-        api_key_name = "OPENAI_API_KEY",
-        endpoint = "https://api.openai.com/v1/",
-        model = "o4-mini",
-        temperature = 0,
-      },
-
-      -- OpenRouter vendor settings
-      vendors = {
+        -- Add a new vendor specifically for the cursor applying provider
+        experimental_models = {
+          __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
+          model = "gemini-2.5-pro", -- Override the model to use flash
+          extra_request_body = {
+            temperature = 0, -- Set temperature to 0 for deterministic cursor application
+          },
+        },
 
         planning = {
           __inherited_from = "openai",
@@ -83,96 +72,22 @@ return {
           model = "llama-3.3-70b-versatile",
         },
 
-        high_speed = {
-          __inherited_from = "openai",
-          api_key_name = "GROQ_API_KEY",
-          -- Correct the endpoint to include /openai/v1
-          endpoint = "https://api.groq.com/openai/v1",
-          -- Correct the model name format
-          model = "llama-3.1-8b-instant",
-          temperature = 0,
-        },
+        system_prompt = function()
+          local hub = require("mcphub").get_hub_instance()
+          -- Check if hub exists and is ready before generating the prompt
+          if hub and hub:is_ready() then
+            return hub:get_active_servers_prompt()
+          else
+            return "" -- Or maybe "MCP Hub not ready. Available servers will be listed later."
+          end
+        end,
 
-        groq = { -- define groq provider
-          __inherited_from = "openai",
-          api_key_name = "GROQ_API_KEY",
-          endpoint = "https://api.groq.com/openai/v1/",
-          model = "deepseek-r1-distill-llama-70b",
-          max_tokens = 8192, -- remember to increase this value, otherwise it will stop generating halfway
-        },
-
-        -- Add a new vendor specifically for the cursor applying provider
-        experimental_models = {
-          __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
-          model = "gemini-2.5-pro-preview-05-06", -- Override the model to use flash
-          temperature = 0, -- Set temperature to 0 for deterministic cursor application
-        },
-
-        openrouter_deepseek = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "deepseek/deepseek-r1",
-        },
-
-        deepinfra = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          endpoint = "https://api.deepinfra.com/v1/openai",
-          api_key_name = "DEEPINFRA_API_KEY",
-          model = "deepseek-ai/DeepSeek-R1-Turbo",
-        },
-
-        openrouter_qwenq = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "qwen/qwen-2.5-72b-instruct",
-        },
-
-        openrouter_gemini = {
-          __inherited_from = "openai",
-          disable_tools = true,
-          endpoint = "https://openrouter.ai/api/v1",
-          api_key_name = "OPENROUTER_API_KEY",
-          model = "google/gemini-2.0-flash-thinking-exp-1219:free",
-          temperature = 0,
-        },
+        custom_tools = function()
+          return {
+            require("mcphub.extensions.avante").mcp_tool(),
+          }
+        end,
       },
-
-      -- Autosuggest settings
-
-      -- RAG service settings
-      --      rag_service = {
-      --       enabled = true, -- Enables the RAG service
-      --      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-      --        provider = "ollama", -- The provider to use for RAG service
-      --       llm_model = "Crocod1le/rag-skeleton-build:latest", -- The LLM model to use for RAG service
-      --      embed_model = "Crocod1le/snowflake-custom:latest",
-      --     endpoint = "http://127.0.0.1:11434", -- Must match your Ollama endpoint since provider is "ollama"
-      --  },
-      --
-
-      -- MCP Hub Setup
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        -- Check if hub exists and is ready before generating the prompt
-        if hub and hub:is_ready() then
-          return hub:get_active_servers_prompt()
-        else
-          -- Return an empty string or a placeholder if hub is not ready
-          return "" -- Or maybe "MCP Hub not ready. Available servers will be listed later."
-        end
-      end,
-
-      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
     },
   },
 }
