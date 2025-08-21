@@ -59,10 +59,10 @@ Follow these principles for effective interaction and autonomous tool use:
 local prompt_active = true
 
 -- Apply the custom prompt by default on load
-require("avante.config").override({
-  system_prompt = custom_system_prompt,
-})
-vim.notify("Custom system prompt activated by default", vim.log.levels.INFO)
+-- require("avante.config").override({
+--  system_prompt = custom_system_prompt,
+-- })
+-- vim.notify("Custom system prompt activated by default", vim.log.levels.INFO)
 
 -- Autocmd to toggle the prompt on/off
 vim.api.nvim_create_autocmd("User", {
