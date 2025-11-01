@@ -1,7 +1,7 @@
 -- This is initialised on startup, and config.lazy is called to load the rest of the plugins
 require("config.lazy")
 vim.o.background = "dark"
-vim.cmd.colorscheme("base16-black-metal-gorgoroth")
+vim.cmd.colorscheme("e-ink")
 require("plugins.zenmode")
 vim.g.copilot_filetypes = { markdown = true }
 -- This is the transparent scheme I previously used
