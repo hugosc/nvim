@@ -1,93 +1,63 @@
 return {
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = true,
-    version = false,
-    build = "make",
-    --   dir = "~/avantegeminitools/",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+  "yetone/avante.nvim",
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  -- ⚠️ must add this setting! ! !
+  build = vim.fn.has("win32") ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    or "make",
+  event = "VeryLazy",
+  version = false, -- Never set this value to "*"! Never!
+  ---@module 'avante'
+  ---@type avante.Config
+  opts = {
+
+    disabled_tools = { "add_todos", "update_todo_status", "attempt_completion" },
+    -- add any opts here
+    -- this file can contain specific instructions for your project
+    --   instructions_file = "avante.md",
+    -- for example
+    provider = "copilot",
+    providers = {
+      copilot = {
+        model = "gpt-5-mini",
+
+        disabled_tools = { "add_todos", "update_todo_status" },
+      },
     },
-
-    opts = {
-
-      --      rag_service = {
-      --       enabled = true, -- Enables the RAG service
-      --      host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-      --        provider = "gemini", -- The provider to use for RAG service
-      --       llm_model = "models/gemini-2.0-flash", -- The LLM model to use for RAG service
-      --      embed_model = "models/text_embed-004",
-      --     endpoint = "https://generativelanguage.googleapis.com/v1beta/openai/", -- Must match your Ollama endpoint since provider is "ollama"
-      --  },
-      disabled_tools = { "python" },
-      -- General settings
-      behaviour = {
-        enable_token_counting = false,
-        enable_claude_text_tool_mode = false,
-        enable_cursor_planning_mode = true,
-        use_cwd_as_project_root = true,
-        auto_suggestions = false,
-        minimize_diff = true,
-      },
-
-      history = {
-        max_tokens = 4096,
-      },
-
-      -- Provider settings
-      provider = "copilot", -- Choose between: "ollama", "claude", "openrouter", "copilot"
-      cursor_applying_provider = "planning", -- Use the new vendor for cursor application
-
-      providers = {
-        -- Gemini provider settings
-        gemini = {
-          model = "gemini-2.5-flash",
-          extra_request_body = {
-            temperature = 0.1,
+  },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "MunifTanjim/nui.nvim",
+    --- The below dependencies are optional,
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "stevearc/dressing.nvim", -- for input provider dressing
+    "folke/snacks.nvim", -- for input provider snacks
+    "nvim-mini/mini.icons", -- or echasnovski/mini.icons
+    "zbirenbaum/copilot.lua", -- for providers='copilot'
+    {
+      -- support for image pasting
+      "HakonHarnes/img-clip.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- recommended settings
+        default = {
+          embed_image_as_base64 = false,
+          prompt_for_file_name = false,
+          drag_and_drop = {
+            insert_mode = true,
           },
+          -- required for Windows users
+          use_absolute_path = true,
         },
-        -- Copilot provider settings
-        copilot = {
-          model = "o4-mini",
-        },
-
-        -- Add a new vendor specifically for the cursor applying provider
-        experimental_models = {
-          __inherited_from = "gemini", -- Inherit base settings from the main gemini provider
-          model = "gemini-2.5-pro", -- Override the model to use flash
-          extra_request_body = {
-            temperature = 0, -- Set temperature to 0 for deterministic cursor application
-          },
-        },
-
-        planning = {
-          __inherited_from = "openai",
-          api_key_name = "GROQ_API_KEY",
-          endpoint = "https://api.groq.com/openai/v1/",
-          model = "llama-3.3-70b-versatile",
-        },
-
-        system_prompt = function()
-          local hub = require("mcphub").get_hub_instance()
-          -- Check if hub exists and is ready before generating the prompt
-          if hub and hub:is_ready() then
-            return hub:get_active_servers_prompt()
-          else
-            return "" -- Or maybe "MCP Hub not ready. Available servers will be listed later."
-          end
-        end,
-
-        custom_tools = function()
-          return {
-            require("mcphub.extensions.avante").mcp_tool(),
-          }
-        end,
       },
+    },
+    {
+      -- Make sure to set this up properly if you have lazy=true
+      "MeanderingProgrammer/render-markdown.nvim",
+      opts = {
+        file_types = { "markdown", "Avante" },
+      },
+      ft = { "markdown", "Avante" },
     },
   },
 }
