@@ -31,3 +31,7 @@ end, {
 
 -- Go to normal mode from terminal with double escape
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true })
+
+-- Theme toggle keybinding
+local theme_toggle = require("config.theme-toggle")
+vim.keymap.set("n", "<leader>uut", theme_toggle.toggle_theme, { noremap = true, silent = true, desc = "Toggle theme (pywal/e-ink)" })
