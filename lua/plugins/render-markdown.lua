@@ -7,7 +7,7 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   -- Add dependencies if needed (e.g., for icons)
-  dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- Or 'nvim-tree/nvim-web-devicons'
+  dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- Or 'nvim-tree/nvim-web-devicons'
   -- Configure the plugin within the 'opts' table
   opts = {
     -- You can configure many aspects here, refer to the plugin's README/Wiki
