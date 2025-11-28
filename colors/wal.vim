@@ -32,7 +32,18 @@ else
   let color15 = "#dddfe1"
 endif
 
-set background=dark
+" Auto-detect background based on background color luminance
+let s:bg_hex = substitute(background, '#', '', '')
+let s:r = str2nr(strpart(s:bg_hex, 0, 2), 16)
+let s:g = str2nr(strpart(s:bg_hex, 2, 2), 16)
+let s:b = str2nr(strpart(s:bg_hex, 4, 2), 16)
+let s:luminance = (0.2126 * s:r + 0.7152 * s:g + 0.0722 * s:b) / 255.0
+if s:luminance > 0.5
+  set background=light
+else
+  set background=dark
+endif
+
 let g:colors_name = "wal"
 
 " Set terminal colors to match wal palette

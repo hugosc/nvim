@@ -1,9 +1,9 @@
 -- This is initialised on startup, and config.lazy is called to load the rest of the plugins
 require("config.lazy")
-vim.o.background = "dark"
+-- Setup watcher first to detect and set background, then load colorscheme
+require("config.theme-toggle").setup_wal_watcher()
 vim.cmd.colorscheme("wal")
 require("plugins.zenmode")
-require("config.theme-toggle").setup_wal_watcher()
 vim.g.copilot_filetypes = { markdown = true }
 -- This is the transparent scheme I previously used
 --vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
